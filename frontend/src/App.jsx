@@ -20,6 +20,9 @@ import Contact from "./pages/Contact"
 import Cart from "./pages/Cart"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
+import EmailVerification from "./pages/EmailVerification"
+import ForgotPassword from "./pages/ForgotPassword"
+import ResetPassword from "./pages/ResetPassword"
 
 // ✅ Admin imports
 import AdminLayout from "./pages/Admin/AdminLayout"
@@ -61,6 +64,9 @@ function AnimatedRoutes() {
             {/* Auth pages */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/email-verification" element={<EmailVerification />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
 
             {/* Admin Dashboard (protected) */}
             <Route
@@ -99,7 +105,8 @@ function App() {
     <AuthProvider>
       <Router>
         <Header />
-        <main className="flex-grow-1">
+        {/* Push content 2 steps below header */}
+        <main className="flex-grow-1 pt-5 pt-lg-5" style={{ marginTop: "10px" }}>
           <AnimatedRoutes />
         </main>
         <Footer />
@@ -107,5 +114,6 @@ function App() {
     </AuthProvider>
   )
 }
+
 
 export default App
