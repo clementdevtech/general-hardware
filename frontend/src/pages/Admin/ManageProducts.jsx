@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import API from "../../api"
+import "../../assets/styles/ManageProducts.css" // We'll add a few CSS tweaks
 
 export default function ManageProducts() {
   const [products, setProducts] = useState([])
@@ -32,14 +33,15 @@ export default function ManageProducts() {
 
   return (
     <div className="container py-3">
-      <div className="d-flex justify-content-between align-items-center mb-3">
+      <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
         <h2>🧰 Manage Hardware Products</h2>
         <Link to="/admin/products/new" className="btn btn-success">
           + Add New Product
         </Link>
       </div>
 
-      <div className="table-responsive">
+      {/* Table view (desktop) */}
+      <div className="table-responsive d-none d-md-block">
         <table className="table table-striped align-middle">
           <thead className="table-dark">
             <tr>
@@ -106,6 +108,51 @@ export default function ManageProducts() {
             )}
           </tbody>
         </table>
+      </div>
+
+      {/* Card layout (mobile) */}
+      <div className="d-block d-md-none">
+        {products.length > 0 ? (
+          products.map((p) => (
+            <div key={p._id} className="product-card shadow-sm mb-3 p-2 rounded">
+              <div className="d-flex">
+                <img
+                  src={p.images && p.images[0] ? p.images[0] : "/placeholder.jpg"}
+                  alt={p.name}
+                  className="product-thumb"
+                />
+                <div className="ms-2 flex-grow-1">
+                  <h6 className="mb-1">{p.name}</h6>
+                  <small className="text-muted d-block">
+                    {p.category} | {p.brand || "—"}
+                  </small>
+                  <small className="text-muted d-block">
+                    {p.unit} | Stock: {p.stock}
+                  </small>
+                  <strong className="text-success">
+                    Ksh {p.price?.toLocaleString() || "—"}
+                  </strong>
+                </div>
+              </div>
+              <div className="mt-2 d-flex justify-content-end gap-2">
+                <Link
+                  to={`/admin/products/edit/${p._id}`}
+                  className="btn btn-sm btn-warning"
+                >
+                  Edit
+                </Link>
+                <button
+                  className="btn btn-sm btn-danger"
+                  onClick={() => handleDelete(p._id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="text-center text-muted mt-3">No products found.</p>
+        )}
       </div>
     </div>
   )

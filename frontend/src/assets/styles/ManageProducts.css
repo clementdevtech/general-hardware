@@ -1,0 +1,23 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+}
+
+.product-thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@media (max-width: 576px) {
+  .product-card {
+    flex-direction: column;
+  }
+  .product-thumb {
+    width: 90px;
+    height: 90px;
+  }
+}
