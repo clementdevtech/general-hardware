@@ -19,8 +19,8 @@ const app = express();
 // ✅ CORS configuration
 const allowedOrigins = [
   process.env.CLIENT_URL || "http://localhost:5173",
-  "https://www.barakahomes.co.ke",
-  "https://barakahomes.co.ke",
+  "https://www.generalhardware.co.ke",
+  "https://generalhardware.co.ke",
 ];
 
 app.use(

@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const API_URL = process.env.REACT_APP_API_URL;
+import API from "../api";
 
 export default function ResetPassword() {
   const [password, setPassword] = useState("");
@@ -35,7 +34,7 @@ export default function ResetPassword() {
     }
 
     try {
-      const res = await axios.post(`${API_URL}/auth/reset-password`, {
+      const res = await API.post(`/auth/reset-password`, {
         token,
         password,
       });

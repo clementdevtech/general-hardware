@@ -37,6 +37,8 @@ function AuthProvider({ children }) {
     const res = await API.post("/auth/login", { email, password });
     localStorage.setItem("token", res.data.token);
     setUser(res.data.user);
+
+    window.location.reload();
   };
 
   const register = async (email, username, password) => {
@@ -47,6 +49,8 @@ function AuthProvider({ children }) {
     await API.post("/auth/logout");
     localStorage.removeItem("token");
     setUser(null);
+
+    window.location.reload();
   };
 
   return (

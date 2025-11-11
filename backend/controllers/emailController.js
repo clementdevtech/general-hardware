@@ -2,14 +2,18 @@ import nodemailer from "nodemailer";
 import crypto from "crypto";
 import EmailVerification from "../models/EmailVerification.js";
 import PasswordReset from "../models/PasswordReset.js";
+import dotenv from "dotenv";
+
+
+dotenv.config();
 
 
 const CLIENT_URL = process.env.CLIENT_URL;
-const COMPANY_NAME = process.env.COMPANY_NAME || "Baraka Homes";
-const COMPANY_LOGO = process.env.COMPANY_LOGO || "";
+const COMPANY_NAME = process.env.COMPANY_NAME;
+const COMPANY_LOGO = process.env.COMPANY_LOGO;
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.zoho.com",
+  host: "smtp.gmail.com",
   port: 465,
   secure: true,
   auth: {

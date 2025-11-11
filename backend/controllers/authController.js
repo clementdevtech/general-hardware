@@ -111,7 +111,16 @@ export const login = async (req, res) => {
 
     email = email.trim().toLowerCase();
     const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ message: "Email not found" });
+    if (!user) {
+        const pending = await PendingUser.findOne({ email });
+          if (pending) {
+              await sendVerificationEmail(email);
+              return res.status(403).json({
+                  message: "Your account is not verified yet. Please check your email for the verification link.",
+          });
+        }
+       return res.status(404).json({ message: "Email not found" });
+     }
 
     const match = await bcrypt.compare(password, user.password);
     if (!match) return res.status(401).json({ message: "Invalid password" });
@@ -192,12 +201,16 @@ export const resetPassword = async (req, res) => {
 
 // ✅ Verify email
 export const verifyEmail = async (req, res) => {
-  const { token, email, code } = req.body;
-  if (!token || !email) {
-    return res.status(400).json({ message: "Token and email are required" });
-  }
-
   try {
+    // Safely handle GET and POST
+    const token = req?.body?.token || req?.query?.token;
+    const email = req?.body?.email || req?.query?.email;
+    const code = req?.body?.code || req?.query?.code;
+
+    if (!token || !email) {
+      return res.status(400).json({ message: "Token and email are required." });
+    }
+
     const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
 
     const record = await EmailVerification.findOne({
@@ -207,20 +220,18 @@ export const verifyEmail = async (req, res) => {
     });
 
     if (!record) {
-      return res.status(400).json({ message: "Invalid or expired verification link" });
+      return res.status(400).json({ message: "Invalid or expired verification link." });
     }
 
-    // Optional: check numeric code if you're also sending a 6-digit code
     if (code && record.code !== code) {
-      return res.status(400).json({ message: "Invalid verification code" });
+      return res.status(400).json({ message: "Invalid verification code." });
     }
 
     const pending = await PendingUser.findOne({ email: email.toLowerCase() });
     if (!pending) {
-      return res.status(404).json({ message: "No pending user found" });
+      return res.status(404).json({ message: "No pending user found for this email." });
     }
 
-    // Move from PendingUser → User
     const newUser = await User.create({
       email: pending.email,
       username: pending.username,
@@ -232,14 +243,18 @@ export const verifyEmail = async (req, res) => {
     await EmailVerification.deleteOne({ email: email.toLowerCase() });
 
     return res.json({
-      message: "Email verified successfully",
-      user: { email: newUser.email, username: newUser.username },
+      message: "✅ Email verified successfully!",
+      user: {
+        email: newUser.email,
+        username: newUser.username,
+      },
     });
   } catch (err) {
-    console.error("Verify email error:", err);
-    res.status(500).json({ message: "Internal server error" });
+    console.error("❌ verifyEmail error:", err);
+    return res.status(500).json({ message: "Internal server error." });
   }
 };
+
 
 export const authMiddleware = async (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];

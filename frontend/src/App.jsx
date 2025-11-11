@@ -1,29 +1,38 @@
 import React from "react"
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 
-// import Header from "./components/Header"
-// import Footer from "./components/Footer"
+import Header from "./components/Header"
+import Footer from "./components/Footer"
 
-// import Home from "./pages/Home"
-// import Products from "./pages/Products"
-// import Services from "./pages/Services"
-// import Gallery from "./pages/Gallery"
-// import Blog from "./pages/Blog"
-// import BlogDetails from "./pages/BlogDetails"
-// import Contact from "./pages/Contact"
-// import Cart from "./pages/Cart"
-// import Login from "./pages/Login"
-// import Register from "./pages/Register"
+import Home from "./pages/Home"
+import Products from "./pages/Products"
+import Services from "./pages/Services"
+import Gallery from "./pages/Gallery"
+import Blog from "./pages/Blog"
+import BlogDetails from "./pages/BlogDetails"
+import Contact from "./pages/Contact"
+import Cart from "./pages/Cart"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
+import EmailVerification from "./pages/EmailVerification"
+import ForgotPassword from "./pages/ForgotPassword"
+import ResetPassword from "./pages/ResetPassword"
 
-// import AdminLayout from "./pages/Admin/AdminLayout"
-// import AdminBlogForm from "./pages/Admin/AdminBlogForm"
-// import AdminServices from "./pages/Admin/AdminServices"
-// import AdminProductForm from "./pages/Admin/AdminProductForm"
-// import ManageBlogs from "./pages/Admin/ManageBlogs"
-// import ManageProducts from "./pages/Admin/ManageProducts"
+// ✅ Admin imports
+import AdminLayout from "./pages/Admin/AdminLayout"
+import AdminBlogForm from "./pages/Admin/AdminBlogForm"
+import AdminServices from "./pages/Admin/AdminServices"
+import AdminProductForm from "./pages/Admin/AdminProductForm"
+import ManageBlogs from "./pages/Admin/ManageBlogs"
+import ManageProducts from "./pages/Admin/ManageProducts"
 
-// import ProtectedRoute from "./components/ProtectedRoute"
+import ProtectedRoute from "./components/ProtectedRoute"
 import AuthProvider from "./context/AuthContext"
 
 import "./App.css"
@@ -42,16 +51,48 @@ function AnimatedRoutes() {
       >
         <div ref={nodeRef}>
           <Routes location={location}>
-            {/* All routes are commented out. Showing page missing message */}
+            {/* Public pages */}
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogDetails />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/cart" element={<Cart />} />
+
+            {/* Auth pages */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/email-verification" element={<EmailVerification />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
+
+            {/* Admin Dashboard (protected) */}
             <Route
-              path="*"
+              path="/admin"
               element={
-                <div style={{ padding: "2rem", textAlign: "center" }}>
-                  <h2>Page Missing</h2>
-                  <p>This page is currently unavailable.</p>
-                </div>
+                <ProtectedRoute role="admin">
+                  <AdminLayout />
+                </ProtectedRoute>
               }
-            />
+            >
+              {/* Blogs */}
+              <Route path="blogs" element={<ManageBlogs />} />
+              <Route path="blogs/new" element={<AdminBlogForm />} />
+              <Route path="blogs/edit/:slug" element={<AdminBlogForm />} />
+
+              {/* Products */}
+              <Route path="products" element={<ManageProducts />} />
+              <Route path="products/new" element={<AdminProductForm />} />
+              <Route path="products/edit/:id" element={<AdminProductForm />} />
+
+              {/* Services */}
+              <Route path="services" element={<AdminServices />} />
+
+              {/* Catch-all */}
+              <Route path="*" element={<div>Admin Page Not Found</div>} />
+            </Route>
           </Routes>
         </div>
       </CSSTransition>
@@ -63,14 +104,19 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        {/* <Header /> */}
-        <main className="flex-grow-1">
+        <Header />
+        {/* Push content 2 steps below header */}
+        <main
+          className="flex-grow-1 pt-5 pt-lg-5"
+          style={{ marginTop: "10px" }}
+        >
           <AnimatedRoutes />
         </main>
-        {/* <Footer /> */}
+        <Footer />
       </Router>
     </AuthProvider>
   )
 }
+
 
 export default App

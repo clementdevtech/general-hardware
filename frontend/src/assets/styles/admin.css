@@ -1,0 +1,26 @@
+/* Sidebar transitions */
+.admin-sidebar {
+  transform: translateX(-100%);
+}
+.admin-sidebar.translate-x-0 {
+  transform: translateX(0);
+}
+.admin-sidebar.-translate-x-100 {
+  transform: translateX(-100%);
+}
+
+@media (max-width: 768px) {
+    .nav{
+        flex-direction: row;
+        width: 40vw;
+    }
+
+}
+
+
+/* Slight hover highlight for sidebar links */
+.admin-sidebar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  transition: 0.2s;
+}

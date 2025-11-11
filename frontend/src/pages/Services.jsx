@@ -7,7 +7,7 @@ export default function Services() {
         style={{
           background: "linear-gradient(135deg, #6c757d, #adb5bd, #dee2e6)",
           color: "#212529",
-          backgroundImage: "url('/images/hardware-bg.jpeg')",
+          backgroundImage: "url('/images/image23.jpeg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundBlendMode: "overlay",
@@ -26,7 +26,7 @@ export default function Services() {
           <div className="col-md-4">
             <div className="card h-100 shadow-sm border-0">
               <img
-                src="/images/delivery-truck.jpeg"
+                src="/images/image28.jpeg"
                 className="card-img-top"
                 alt="Delivery Services"
               />
@@ -46,7 +46,7 @@ export default function Services() {
           <div className="col-md-4">
             <div className="card h-100 shadow-sm border-0">
               <img
-                src="/images/steel-cutting.jpeg"
+                src="/images/image19.jpeg"
                 className="card-img-top"
                 alt="Cutting & Fabrication"
               />
@@ -66,7 +66,7 @@ export default function Services() {
           <div className="col-md-4">
             <div className="card h-100 shadow-sm border-0">
               <img
-                src="/images/bulk-materials.jpeg"
+                src="/images/image6.jpeg"
                 className="card-img-top"
                 alt="Bulk Orders"
               />
@@ -86,7 +86,7 @@ export default function Services() {
           <div className="col-md-4">
             <div className="card h-100 shadow-sm border-0">
               <img
-                src="/images/technical-support.jpeg"
+                src="/images/image1.jpeg"
                 className="card-img-top"
                 alt="Technical Support"
               />
@@ -106,7 +106,7 @@ export default function Services() {
           <div className="col-md-4">
             <div className="card h-100 shadow-sm border-0">
               <img
-                src="/images/custom-orders.jpeg"
+                src="/images/image11.jpeg"
                 className="card-img-top"
                 alt="Custom Orders"
               />
