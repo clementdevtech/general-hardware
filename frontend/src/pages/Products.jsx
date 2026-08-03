@@ -16,6 +16,22 @@ const toNumber = (v) => {
   return Number.isFinite(n) ? n : Infinity;
 };
 
+const CATEGORY_CHIPS = [
+  "Cement & Concrete",
+  "Steel & Reinforcement",
+  "Roofing Materials",
+  "Timber & Boards",
+  "Plumbing Supplies",
+  "Electrical Supplies",
+  "Tiles & Finishes",
+  "Paints & Chemicals",
+  "Fasteners",
+  "Fencing Materials",
+  "Hand & Power Tools",
+  "Doors & Windows",
+  "Safety Equipment",
+];
+
 const HandleWithTooltip = ({ value = 0, dragging, index, ...rest }) => (
   <Tooltip
     prefixCls="rc-tooltip"
@@ -41,7 +57,7 @@ export default function Products() {
 
   useEffect(() => {
     fetchProducts()
-      .then((data) => setProducts(data))
+      .then((data) => setProducts(data || []))
       .finally(() => setLoading(false));
   }, []);
 
@@ -82,6 +98,30 @@ export default function Products() {
           Browse through our tools, building materials, and accessories.
         </p>
       </div>
+
+      <section className="mb-4">
+        <div className="d-flex flex-column flex-sm-row flex-wrap gap-2 align-items-start align-items-sm-center justify-content-between">
+          <div>
+            <h2 className="h4 fw-bold text-dark mb-2">Shop by Category</h2>
+            <p className="text-muted mb-0">
+              Discover our 13 core supply lines and filter your search faster.
+            </p>
+          </div>
+        </div>
+
+        <div className="d-flex flex-wrap gap-2 mt-3">
+          {CATEGORY_CHIPS.map((cat) => (
+            <button
+              key={cat}
+              className={`btn btn-sm ${category === cat ? "btn-success text-white" : "btn-outline-secondary"}`}
+              type="button"
+              onClick={() => setCategory(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </section>
 
       {/* Filters */}
       <div className="row g-3 mb-4">

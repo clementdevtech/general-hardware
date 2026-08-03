@@ -1,6 +1,6 @@
 import { FaWhatsapp } from "react-icons/fa";
 
-export default function WhatsAppButton({ phone = "254787848787", message = "Hello, I’m interested in your products!" }) {
+export default function WhatsAppButton({ phone = "254780396517", message = "Hello, I’m interested in your products!" }) {
   const handleClick = () => {
     const encodedMsg = encodeURIComponent(message);
     window.open(`https://wa.me/${phone}?text=${encodedMsg}`, "_blank");

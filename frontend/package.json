@@ -1,6 +1,7 @@
 {
   "name": "baraka-homes",
   "private": true,
+  "allowScripts": "all",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

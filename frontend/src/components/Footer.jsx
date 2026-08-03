@@ -31,7 +31,7 @@ export default function Footer() {
             <FaFacebookF />
           </a>
           <a
-            href="https://wa.me/254787848787"
+            href="https://wa.me/254780396517"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white fs-5"

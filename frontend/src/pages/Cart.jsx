@@ -62,7 +62,7 @@ export default function Cart() {
     const message = `🧰 Hello, this is ${name}.\n📞 Phone: ${phone}\n\n🛒 I'd like to order:\n${orderLines}\n\n💰 Total: KSh ${total}\n📍 My Location: ${location || "Not shared"}\n\nFrom: General Hardware 🧱`
 
     const encoded = encodeURIComponent(message)
-    const sellerPhone = "254787848787"
+    const sellerPhone = "254780396517"
     window.open(`https://wa.me/${sellerPhone}?text=${encoded}`, "_blank")
 
     clearCart()

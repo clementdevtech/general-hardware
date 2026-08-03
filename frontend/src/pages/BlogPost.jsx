@@ -90,7 +90,7 @@ export default function BlogPost() {
 
       {/* ✅ Floating WhatsApp CTA */}
       <a
-        href="https://wa.me/254746415223?text=Hello%20Baraka%20Homes%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20blog%20insights."
+        href="https://wa.me/254780396517?text=Hello%20Baraka%20Homes%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20blog%20insights."
         target="_blank"
         rel="noopener noreferrer"
         className="btn btn-success rounded-circle shadow-lg"

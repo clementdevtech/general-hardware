@@ -21,7 +21,7 @@ export default function Contact() {
     const text = encodeURIComponent(
       `👋 Hello *General Hardware*,\n\n📛 Name: ${name}\n📧 Email: ${email}\n💬 Message: ${message}\n\n📍 From: Athi River, Machakos – Kenya`
     );
-    const phoneNumber = "254787848787";
+    const phoneNumber = "254780396517";
     window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank");
   };
 
@@ -52,7 +52,7 @@ export default function Contact() {
           <div className="card shadow-sm border-0">
             <div className="card-body">
               <h5 className="fw-bold text-success mb-3">Get in Touch</h5>
-              <p><strong>📞 Phone:</strong> +254 787 848 787</p>
+              <p><strong>📞 Phone:</strong> +254 780 396 517</p>
               <p><strong>✉️ Email:</strong> sales@generalhardware.co.ke</p>
               <p><strong>📍 Location:</strong> Athi River, Machakos – Kenya</p>
               <p><strong>🕒 Working Hours:</strong> Mon–Sat: 8:00 AM – 6:00 PM</p>

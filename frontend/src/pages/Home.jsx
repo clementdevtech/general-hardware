@@ -69,6 +69,155 @@ const PRODUCTS = [
   },
 ];
 
+const CATEGORY_LINES = [
+  {
+    title: "Cement & Concrete",
+    items: [
+      "Portland Cement",
+      "Masonry Cement",
+      "Ready Mix Concrete",
+      "Concrete Blocks",
+      "Pavers",
+    ],
+  },
+  {
+    title: "Steel & Reinforcement",
+    items: [
+      "Deformed Steel Bars (D8, D10, D12, D16, D20, D25)",
+      "Round Bars",
+      "Binding Wire",
+      "BRC Mesh",
+      "Hoop Iron",
+      "Expanded Metal Mesh",
+    ],
+  },
+  {
+    title: "Roofing Materials",
+    items: [
+      "Mabati (corrugated iron sheets)",
+      "Box Profile Roofing Sheets",
+      "Versatile Roofing Sheets",
+      "Ridge Caps",
+      "Roofing Nails",
+      "Gutters & Downpipes",
+    ],
+  },
+  {
+    title: "Timber & Boards",
+    items: [
+      "Cypress Timber",
+      "Blue Gum Timber",
+      "Plywood",
+      "MDF Boards",
+      "Chipboard",
+      "Ceiling Boards",
+    ],
+  },
+  {
+    title: "Plumbing Supplies",
+    items: [
+      "PVC Pipes & Fittings",
+      "PPR Pipes",
+      "HDPE Pipes",
+      "Water Storage Tanks",
+      "Toilets & Basins",
+      "Kitchen Sinks",
+      "Taps & Mixers",
+    ],
+  },
+  {
+    title: "Electrical Supplies",
+    items: [
+      "Electrical Cables",
+      "Switches & Sockets",
+      "Circuit Breakers",
+      "Distribution Boards",
+      "LED Bulbs",
+      "Conduits & Accessories",
+    ],
+  },
+  {
+    title: "Tiles & Finishes",
+    items: [
+      "Floor Tiles",
+      "Wall Tiles",
+      "Ceramic Tiles",
+      "Porcelain Tiles",
+      "Tile Adhesive",
+      "Tile Grout",
+    ],
+  },
+  {
+    title: "Paints & Chemicals",
+    items: [
+      "Emulsion Paint",
+      "Gloss Paint",
+      "Primer",
+      "Undercoat",
+      "Waterproofing Chemicals",
+      "Thinners",
+      "Silicone Sealants",
+    ],
+  },
+  {
+    title: "Fasteners",
+    items: [
+      "Wire Nails",
+      "Concrete Nails",
+      "Roofing Nails",
+      "Screws",
+      "Bolts & Nuts",
+      "Washers",
+      "Rivets",
+    ],
+  },
+  {
+    title: "Fencing Materials",
+    items: [
+      "Chain Link",
+      "Barbed Wire",
+      "Razor Wire",
+      "Fence Posts",
+      "Welded Mesh",
+    ],
+  },
+  {
+    title: "Hand & Power Tools",
+    items: [
+      "Hammers",
+      "Tape Measures",
+      "Spanners",
+      "Screwdrivers",
+      "Wheelbarrows",
+      "Drilling Machines",
+      "Angle Grinders",
+      "Welding Machines",
+    ],
+  },
+  {
+    title: "Doors & Windows",
+    items: [
+      "Steel Doors",
+      "Wooden Doors",
+      "Flush Doors",
+      "Aluminium Windows",
+      "Door Locks",
+      "Hinges",
+    ],
+  },
+  {
+    title: "Safety Equipment",
+    items: [
+      "Safety Helmets",
+      "Reflective Jackets",
+      "Safety Boots",
+      "Gloves",
+      "Dust Masks",
+      "Safety Goggles",
+    ],
+  },
+];
+
 // -----------------------------
 // Motion Variants
 // -----------------------------
@@ -295,6 +444,52 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* PRODUCT SUPPLY LINES */}
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fade}
+        className="py-5"
+        style={{ backgroundColor: "#f8fafc" }}
+      >
+        <div className="container">
+          <div className="text-center mb-5">
+            <h2 className="fw-bold mb-3 text-primary">13 Hardware Supply Lines</h2>
+            <p className="text-muted mx-auto" style={{ maxWidth: 760 }}>
+              Explore the full range of materials, tools, and supplies we stock for contractors,
+              builders, and homeowners. Every major category is supported with quality brands,
+              fast delivery, and expert buying advice.
+            </p>
+          </div>
+
+          <div className="row g-4">
+            {CATEGORY_LINES.map((category, index) => (
+              <div key={index} className="col-12 col-md-6 col-lg-4">
+                <div className="card h-100 shadow-sm border-0">
+                  <div className="card-body">
+                    <h3 className="h5 fw-bold text-dark mb-3">{category.title}</h3>
+                    <ul className="list-unstyled text-muted small mb-0">
+                      {category.items.map((item, idx) => (
+                        <li key={idx} className="mb-2">
+                          <span className="me-2 text-success">•</span> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-4">
+            <Link to="/products" className="btn btn-outline-primary btn-lg">
+              Explore Full Product Range
+            </Link>
+          </div>
+        </div>
+      </motion.section>
+
       {/* FEATURED PRODUCTS */}
       <motion.section
         initial="hidden"
@@ -397,7 +592,7 @@ export default function Home() {
           </h3>
           <p className="mb-3">
             Visit our store or reach us via WhatsApp at{" "}
-            <strong>+254 787 848 787</strong>.
+            <strong>+254 780 396 517</strong>.
           </p>
           <Link to="/contact" className="btn btn-warning text-dark fw-bold mt-2">
             Contact Us
@@ -447,7 +642,7 @@ export default function Home() {
               style={{ display: "flex", flexDirection: "column", gap: 10 }}
             >
               <WhatsAppButton
-                phone="254787848787"
+                phone="254780396517"
                 message="Hello General Hardware! I’d like to inquire about your products."
               />
               <a

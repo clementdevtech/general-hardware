@@ -31,17 +31,19 @@ export default function AdminProductForm() {
 
   // ---------- Categories & Units ----------
   const categories = [
-    "Cement",
-    "Steel",
-    "Paints",
-    "Plumbing",
-    "Electrical",
-    "Timber",
-    "Tools",
+    "Cement & Concrete",
+    "Steel & Reinforcement",
+    "Roofing Materials",
+    "Timber & Boards",
+    "Plumbing Supplies",
+    "Electrical Supplies",
+    "Tiles & Finishes",
+    "Paints & Chemicals",
     "Fasteners",
-    "Tiles",
-    "Roofing",
-    "Safety Gear",
+    "Fencing Materials",
+    "Hand & Power Tools",
+    "Doors & Windows",
+    "Safety Equipment",
     "Others",
   ];
 
