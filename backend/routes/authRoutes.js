@@ -7,6 +7,7 @@ import {
   forgotPassword,
   resetPassword,
   verifyEmail,
+  zohoCallback,
 } from "../controllers/authController.js";
 import {
   sendVerificationEmail
@@ -26,6 +27,8 @@ router.post("/reset-password", resetPassword);
 router.get("/verify-email", verifyEmail);
 router.post("/verify-email", verifyEmail);
 router.post("/sendcode", sendVerificationEmail);
+
+router.get("/zoho/callback", zohoCallback);
 
 export default router;
 

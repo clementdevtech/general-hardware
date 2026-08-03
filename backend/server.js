@@ -13,6 +13,7 @@ import authRoutes from "./routes/authRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
 
 const app = express();
 
@@ -45,6 +46,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/contact", contactRoutes);
+app.use("/api/orders", orderRoutes);
 
 // Root test route
 app.get("/", (req, res) => {

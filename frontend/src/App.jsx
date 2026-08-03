@@ -31,6 +31,7 @@ import AdminServices from "./pages/Admin/AdminServices"
 import AdminProductForm from "./pages/Admin/AdminProductForm"
 import ManageBlogs from "./pages/Admin/ManageBlogs"
 import ManageProducts from "./pages/Admin/ManageProducts"
+import ManageOrders from "./pages/Admin/ManageOrders"
 
 import ProtectedRoute from "./components/ProtectedRoute"
 import AuthProvider from "./context/AuthContext"
@@ -86,6 +87,9 @@ function AnimatedRoutes() {
               <Route path="products" element={<ManageProducts />} />
               <Route path="products/new" element={<AdminProductForm />} />
               <Route path="products/edit/:id" element={<AdminProductForm />} />
+
+              {/* Orders */}
+              <Route path="orders" element={<ManageOrders />} />
 
               {/* Services */}
               <Route path="services" element={<AdminServices />} />

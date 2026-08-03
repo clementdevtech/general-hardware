@@ -255,6 +255,24 @@ export const verifyEmail = async (req, res) => {
   }
 };
 
+export const zohoCallback = async (req, res) => {
+  try {
+    const { code, state } = req.query;
+    if (!code) {
+      return res.status(400).json({ message: "Missing Zoho authorization code." });
+    }
+
+    return res.json({
+      message: "Zoho callback received.",
+      code,
+      state: state || null,
+      note: "This route exists for Zoho OAuth callback handling.",
+    });
+  } catch (err) {
+    console.error("Zoho callback error:", err);
+    return res.status(500).json({ message: "Server error processing Zoho callback." });
+  }
+};
 
 export const authMiddleware = async (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];

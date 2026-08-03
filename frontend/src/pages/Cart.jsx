@@ -3,6 +3,7 @@ import { useCart } from "../context/CartContext"
 import products from "../data/products"
 import { Link } from "react-router-dom"
 import { FaWhatsapp, FaTools, FaTrashAlt, FaMapMarkerAlt } from "react-icons/fa"
+import API from "../api"
 
 export default function Cart() {
   const { cart, removeFromCart, updateQty, clearCart } = useCart()
@@ -63,6 +64,21 @@ export default function Cart() {
 
     const encoded = encodeURIComponent(message)
     const sellerPhone = "254780396517"
+
+    // Send order to backend (best-effort)
+    const payload = {
+      name,
+      phone,
+      email: "",
+      location,
+      items: itemsWithData.map((it) => ({ name: it.name, qty: it.qty, price: it.price })),
+      total,
+    }
+    API.post("/orders", payload).catch((err) => {
+      console.error("Order API error:", err?.message || err)
+    })
+
+    // Open WhatsApp as primary buyer flow
     window.open(`https://wa.me/${sellerPhone}?text=${encoded}`, "_blank")
 
     clearCart()

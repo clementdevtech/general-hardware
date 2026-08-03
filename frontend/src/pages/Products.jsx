@@ -92,12 +92,15 @@ export default function Products() {
 
   return (
     <div className="container py-5">
-      <div className="text-center mb-5">
-        <h1 className="fw-bold text-success mb-2">🧱 Hardware Inventory</h1>
-        <p className="text-muted">
-          Browse through our tools, building materials, and accessories.
+      <section className="text-center mb-5">
+        <p className="section-label">Product Catalog</p>
+        <h1 className="fw-bold mb-3">Your Complete Hardware Supply</h1>
+        <p className="text-muted mx-auto" style={{ maxWidth: 760 }}>
+          Browse our inventory of building materials, tools, roofing, plumbing,
+          electrical supplies and more. Filter by category, brand, location or
+          price to find the right products fast.
         </p>
-      </div>
+      </section>
 
       <section className="mb-4">
         <div className="d-flex flex-column flex-sm-row flex-wrap gap-2 align-items-start align-items-sm-center justify-content-between">
@@ -106,6 +109,9 @@ export default function Products() {
             <p className="text-muted mb-0">
               Discover our 13 core supply lines and filter your search faster.
             </p>
+          </div>
+          <div className="text-muted small">
+            Showing {filteredProducts.length} of {products.length} products
           </div>
         </div>
 

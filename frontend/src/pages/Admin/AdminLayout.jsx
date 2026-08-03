@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { FaBlog, FaBox, FaCogs } from "react-icons/fa";
+import { FaBlog, FaBox, FaCogs, FaClipboardList } from "react-icons/fa";
 import "../../assets/styles/admin.css";
 
 export default function AdminLayout() {
@@ -49,6 +49,18 @@ export default function AdminLayout() {
             >
               <FaBox className="me-1" />
               <span className="d-none d-sm-inline">Manage </span>Products
+            </Link>
+          </li>
+
+          <li className="nav-item me-2 me-md-0 mb-md-2">
+            <Link
+              to="orders"
+              className={`nav-link text-white ${
+                location.pathname.includes("orders") ? "fw-bold text-warning" : ""
+              }`}
+            >
+              <FaClipboardList className="me-1" />
+              <span className="d-none d-sm-inline">Manage </span>Orders
             </Link>
           </li>
 
